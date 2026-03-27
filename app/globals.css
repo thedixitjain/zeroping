@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-elevated: #1c1c28;
+  --border: #2a2a3a;
+  --text-primary: #f0f0f8;
+  --text-secondary: #8888aa;
+  --text-muted: #55556a;
+  --accent-purple: #7c6cfc;
+  --accent-cyan: #22d3ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a55;
+}
+
+/* Code areas */
+.code-area {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+/* Scan line animation for loading */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-ring {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.02); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fade-in-up 0.4s ease 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fade-in-up 0.4s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fade-in-up 0.4s ease 0.3s forwards;
+  opacity: 0;
+}
+
+/* Score ring animation */
+@keyframes draw-ring {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: var(--target-offset); }
+}
+
+.score-ring-progress {
+  animation: draw-ring 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  stroke-dashoffset: 283;
+}
+
+/* Syntax highlight override for dark theme */
+pre {
+  background: transparent !important;
+}
