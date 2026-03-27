@@ -55,7 +55,7 @@ function buildMarkdownReport(review: ReviewResponse): string {
     lines.push(``);
     for (const issue of review.issues) {
       lines.push(
-        `### [${issue.severity.toUpperCase()}] ${issue.type} ${issue.line ? `— Line ${issue.line}` : ""}`
+        `### [${issue.severity.toUpperCase()}] ${issue.type} ${issue.line ? `- Line ${issue.line}` : ""}`
       );
       lines.push(`**Issue:** ${issue.description}  `);
       lines.push(`**Fix:** ${issue.suggestion}`);
@@ -154,7 +154,7 @@ export default function ReviewResult({ review, language, onReset }: ReviewResult
         return (
           <div key={severity} className="animate-fade-in-up-delay-1">
             <h3 className={`text-xs font-mono uppercase tracking-wider mb-2 ${colors[severity]}`}>
-              {severity} — {issues.length} {issues.length === 1 ? "issue" : "issues"}
+              {severity} - {issues.length} {issues.length === 1 ? "issue" : "issues"}
             </h3>
             <div className="space-y-2">
               {issues.map((issue, idx) => (
@@ -169,7 +169,7 @@ export default function ReviewResult({ review, language, onReset }: ReviewResult
       {review.positives.length > 0 && (
         <div className="animate-fade-in-up-delay-2">
           <h3 className="text-xs font-mono uppercase tracking-wider text-green-400 mb-2">
-            Positives — {review.positives.length}
+            Positives - {review.positives.length}
           </h3>
           <div className="rounded-xl border border-green-500/20 bg-green-500/5 px-4 py-3 space-y-2">
             {review.positives.map((p, i) => (

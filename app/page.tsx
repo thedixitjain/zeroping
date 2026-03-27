@@ -152,7 +152,7 @@ export default function Home() {
       {/* Main layout */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left panel — config */}
+          {/* Left panel - config */}
           <aside className="w-full lg:w-72 flex-shrink-0 space-y-4">
             {/* Panel header */}
             <div className="hidden lg:block">
@@ -186,7 +186,7 @@ export default function Home() {
             </div>
           </aside>
 
-          {/* Right panel — code + results */}
+          {/* Right panel - code + results */}
           <div className="flex-1 min-w-0 space-y-4">
             {appState === "result" && review ? (
               <ReviewResult review={review} language={language} onReset={handleReset} />
