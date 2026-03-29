@@ -1,121 +1,125 @@
-# ZeroPing - Local LLM Code Review Assistant
+<div align="center">
+  <img src="./public/icon.svg" alt="ZeroPing Logo" width="120" />
+</div>
 
-ZeroPing is a web application that reviews your code entirely locally using Ollama. Zero data leaves your machine, no API keys are required, and no internet connection is needed after setup.
+<h1 align="center">ZeroPing</h1>
+
+<p align="center">
+  <strong>The Air-Gapped, Privacy-First Local Code Review Assistant.</strong><br/>
+  Powered by Local LLMs (Ollama) so your code <b>never</b> leaves your machine.
+</p>
+
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg" />
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-14-black" />
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.100+-teal" />
+  <img alt="Ollama" src="https://img.shields.io/badge/Ollama-Local_LLM-white" />
+</p>
 
 ---
 
-## Prerequisites
+## 🛑 The Problem
 
-- [Ollama](https://ollama.com) installed and running
-- Node.js 18+
-- Python 3.10+
+Modern AI coding assistants are powerful, but they require a severe trade-off: **Privacy**. 
+Every time you use cloud-based AI to review your code, you are sending your intellectual property, API keys embedded in code, and proprietary algorithms to external third-party servers. 
+For enterprise developers, security researchers, and privacy-conscious users, exposing source code to cloud APIs is a critical policy violation.
+
+## 🚀 The Impact & Solution
+
+**ZeroPing** solves this by leveraging state-of-the-art local Large Language Models (LLMs) to perform high-quality, structured code reviews entirely on your machine.
+- **Zero Telemetry.** Your code is never sent to the cloud.
+- **Zero API Keys.** No subscriptions, no usage limits, no credit card required.
+- **True Air-Gap Capability.** works completely offline once models are downloaded. 
+
+By running an aggressive Next.js frontend and a lightweight Python/FastAPI interface pointing directly at your local Ollama daemon, you get a premium DevOps experience running locally.
 
 ---
 
-## Setup
+## ✨ Key Features
 
-**1. Clone the repository**
-```bash
-git clone https://github.com/yourname/ZeroPing.git
-cd ZeroPing
-```
+- **Multi-Language Support & Auto-Detection:** `.py`, `.js`, `.ts`, `.jsx`, `.tsx`, `.go`, `.java`
+- **Dynamic Model Selector:** Hot-swap between `qwen2.5-coder:7b`, `mistral`, or `llama-3.2` based on local availability.
+- **Dual Review Engines:** 
+  - *Strict:* Security and correctness audits.
+  - *Suggest:* Friendly, readable refactoring suggestions.
+- **Actionable Structured Intelligence:** Outputs visually distinct Score Rings, Verdict Badges, and categorized issues (Performance, Security, Style).
+- **One-Click Markdown Export:** Instantly copy the review report for Github/Gitlab PR descriptions.
 
-**2. Pull a model into Ollama**
+---
+
+## 🛠️ Architecture
+
+ZeroPing is built using a modern, decoupled stack allowing extreme modularity:
+
+1. **Frontend (`app/`, `components/`)**: Next.js 14 App Router, React, TailwindCSS, Lucide Icons.
+2. **Backend (`backend/`)**: FastAPI, Pydantic (Strict Schema Enforcement).
+3. **Inference Engine**: [Ollama](https://ollama.com) running deep-level quantized models.
+
+The backend automatically enforces strict JSON output from local LLMs, employing automatic retry fallbacks with hardened prompts if models hallucinate formatting.
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+- **Node.js** (v18+)
+- **Python** (v3.10+)
+- **[Ollama](https://ollama.com/download)** (Required for local LLM inference)
+
+### 1. Model Setup
+
+Pull your preferred coding models into Ollama:
 ```bash
 ollama pull qwen2.5-coder:7b
-```
-Other supported models:
-```bash
-ollama pull mistral:7b
-ollama pull llama3.2:3b
+# Optional:
+# ollama pull mistral:7b 
+# ollama pull llama3.2:3b
 ```
 
-**3. Start the backend**
+### 2. Backend Initialization
+
+Clone the repo and start the local Python API:
 ```bash
-cd backend
+git clone https://github.com/thedixitjain/zeroping.git
+cd zeroping/backend
+
+# Initialize a Virtual Environment
 python -m venv venv
-# On Windows: .\venv\Scripts\activate
-# On Mac/Linux: source venv/bin/activate
+
+# Activate Environment
+# --> Windows: .\venv\Scripts\activate
+# --> Mac/Linux: source venv/bin/activate
+
+# Install dependencies and start server
 pip install -r requirements.txt
 uvicorn main:app --port 8000
 ```
 
-**4. Start the frontend**
-Open a new terminal in the root directory (`ZeroPing/`):
+### 3. Frontend Initialization
+
+In a **new terminal tab**, boot the primary dashboard:
 ```bash
+cd zeroping
 npm install
 npm run dev
 ```
 
-**5. Open in your browser**
-```
-http://localhost:3000
-```
+The application will be universally available at **`http://localhost:3000`** (or 3001 if occupied).
 
 ---
 
-## Features
+## 🤝 Contributing
 
-- **Paste or upload code** - supports `.py`, `.js`, `.ts`, `.jsx`, `.tsx`, `.go`, `.java`
-- **Language auto-detection** from file extension
-- **Model selector** - switch between Qwen2.5-Coder, Mistral, Llama 3.2 with live availability indicators
-- **Review modes** - Strict (security audit) or Suggest (friendly review)
-- **Structured output** - score ring, verdict badge, issues grouped by severity, positives, optional refactored snippet
-- **Copy report** - export the full review as Markdown
-- **Load Sample** - instant demo with a buggy Python snippet
+We believe secure coding should be accessible to everyone. We welcome global contributions:
 
----
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## API Endpoints
+## 📄 License
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/health` | Check API + Ollama status |
-| GET | `/models` | List available models |
-| POST | `/review` | Submit code for review |
-
----
-
-## Project Structure
-
-```
-ZeroPing/
-├── backend/
-│   ├── main.py          # FastAPI app, endpoints
-│   ├── reviewer.py      # Ollama call logic, JSON parser + retry
-│   ├── models.py        # Pydantic v2 request/response models
-│   ├── prompts.py       # System prompt templates
-│   └── requirements.txt
-├── app/
-│   ├── page.tsx     # Main page
-│   ├── layout.tsx
-│   └── globals.css
-├── components/
-│   ├── CodeInput.tsx
-│   ├── ModelSelector.tsx
-│   ├── ModeToggle.tsx
-│   ├── ReviewResult.tsx
-│   ├── ScoreRing.tsx
-│   ├── IssueCard.tsx
-│   └── LoadingState.tsx
-├── lib/
-│   └── api.ts
-├── public/
-│   └── icon.svg         # ZeroPing Logo
-├── package.json
-└── tsconfig.json
-└── README.md
-```
-
----
-
-> **No API keys. No internet required. Your code never leaves your machine.**
-
----
-
-## Screenshots
-
-<!-- Add screenshots here after running the app -->
-
-![ZeroPing UI Placeholder](https://via.placeholder.com/1200x700/0a0a0f/00f0ff?text=ZeroPing+Screenshot)
-
+Distributed under the MIT License. See `LICENSE` for more information.
