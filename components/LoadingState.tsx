@@ -44,7 +44,7 @@ export default function LoadingState({ model }: LoadingStateProps) {
           <span className="font-mono text-purple-400">{modelLabel}</span>
         </p>
         <p className="text-gray-500 text-sm">
-          Running locally — no data leaves your machine
+          Running locally, no data leaves your machine
         </p>
       </div>
 

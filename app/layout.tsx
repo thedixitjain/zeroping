@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ZeroPing — Local LLM Code Review",
+  title: "ZeroPing - Local LLM Code Review",
   description:
     "Review your code locally with Ollama. No API keys. No internet. Your code never leaves your machine.",
   icons: {
