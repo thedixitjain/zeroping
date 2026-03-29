@@ -6,6 +6,7 @@ import ModelSelector from "@/components/ModelSelector";
 import ModeToggle from "@/components/ModeToggle";
 import ReviewResult from "@/components/ReviewResult";
 import LoadingState from "@/components/LoadingState";
+import Image from "next/image";
 import {
   fetchModels,
   fetchHealth,
@@ -89,14 +90,20 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-[#1c1c28] bg-[#0a0a0f]/90 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center">
-              <ShieldCheck size={14} className="text-purple-400" />
+            <div className="w-8 h-8 flex items-center justify-center">
+              <Image 
+                src="/icon.svg" 
+                alt="ZeroPing Logo" 
+                width={32} 
+                height={32} 
+                className="brightness-110"
+              />
             </div>
-            <span className="font-mono font-semibold text-gray-100 tracking-tight">
+            <span className="font-mono font-bold text-gray-100 tracking-tight text-lg">
               ZeroPing
             </span>
-            <span className="hidden sm:block text-xs text-gray-600 font-mono mt-px">
-              Local LLM Code Review
+            <span className="hidden sm:block text-[10px] text-gray-500 font-mono mt-0.5 border border-[#2a2a3a] px-1.5 py-0.5 rounded uppercase tracking-widest bg-[#111118]">
+              v1.0
             </span>
           </div>
 
@@ -178,7 +185,7 @@ export default function Home() {
             {/* Privacy callout */}
             <div className="rounded-xl border border-[#2a2a3a] bg-[#111118] px-4 py-3">
               <div className="flex items-start gap-2.5">
-                <TerminalSquare size={14} className="text-purple-400 flex-shrink-0 mt-0.5" />
+                <TerminalSquare size={14} className="text-[#00F0FF] flex-shrink-0 mt-0.5" />
                 <p className="text-xs text-gray-500 leading-relaxed font-mono">
                   No API keys. No internet required. Your code never leaves your machine.
                 </p>
@@ -253,12 +260,12 @@ export default function Home() {
                 <button
                   onClick={handleSubmit}
                   disabled={!code.trim() || appState === "loading"}
-                  className="w-full py-3 rounded-xl font-medium text-sm transition-all
-                    bg-purple-600 hover:bg-purple-500 active:bg-purple-700 text-white
-                    disabled:opacity-40 disabled:cursor-not-allowed
-                    shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50"
+                  className="w-full py-3 rounded-xl font-bold text-sm transition-all
+                    bg-[#00F0FF] hover:bg-[#00d8e6] active:scale-[0.98] text-black
+                    disabled:opacity-20 disabled:cursor-not-allowed
+                    shadow-lg shadow-cyan-900/20"
                 >
-                  Run Code Review
+                  RUN SYSTEM REVIEW
                 </button>
               </div>
             )}

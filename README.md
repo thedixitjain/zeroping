@@ -33,13 +33,16 @@ ollama pull llama3.2:3b
 **3. Start the backend**
 ```bash
 cd backend
+python -m venv venv
+# On Windows: .\venv\Scripts\activate
+# On Mac/Linux: source venv/bin/activate
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+uvicorn main:app --port 8000
 ```
 
 **4. Start the frontend**
+Open a new terminal in the root directory (`ZeroPing/`):
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
@@ -83,23 +86,24 @@ ZeroPing/
 │   ├── models.py        # Pydantic v2 request/response models
 │   ├── prompts.py       # System prompt templates
 │   └── requirements.txt
-├── frontend/
-│   ├── app/
-│   │   ├── page.tsx     # Main page
-│   │   ├── layout.tsx
-│   │   └── globals.css
-│   ├── components/
-│   │   ├── CodeInput.tsx
-│   │   ├── ModelSelector.tsx
-│   │   ├── ModeToggle.tsx
-│   │   ├── ReviewResult.tsx
-│   │   ├── ScoreRing.tsx
-│   │   ├── IssueCard.tsx
-│   │   └── LoadingState.tsx
-│   ├── lib/
-│   │   └── api.ts
-│   ├── package.json
-│   └── tsconfig.json
+├── app/
+│   ├── page.tsx     # Main page
+│   ├── layout.tsx
+│   └── globals.css
+├── components/
+│   ├── CodeInput.tsx
+│   ├── ModelSelector.tsx
+│   ├── ModeToggle.tsx
+│   ├── ReviewResult.tsx
+│   ├── ScoreRing.tsx
+│   ├── IssueCard.tsx
+│   └── LoadingState.tsx
+├── lib/
+│   └── api.ts
+├── public/
+│   └── icon.svg         # ZeroPing Logo
+├── package.json
+└── tsconfig.json
 └── README.md
 ```
 
@@ -113,5 +117,5 @@ ZeroPing/
 
 <!-- Add screenshots here after running the app -->
 
-![ZeroPing UI Placeholder](https://via.placeholder.com/1200x700/0a0a0f/7c6cfc?text=ZeroPing+Screenshot)
+![ZeroPing UI Placeholder](https://via.placeholder.com/1200x700/0a0a0f/00f0ff?text=ZeroPing+Screenshot)
 

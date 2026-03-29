@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Increased Icon Size for better Favicon visibility (Scaling up the paths) -->
+  <rect width="512" height="512" fill="none" />
+  <g transform="translate(100, 100) scale(1.6)">
+    <path fill="#00F0FF" d="M 0 0 L 120 100 L 0 200 L 40 100 Z" />
+    <path fill="#FFFFFF" d="M 80 0 L 200 100 L 80 200 L 120 100 Z" />
+  </g>
+  <!-- Slightly larger dot as well, shifted to match new scale -->
+  <circle cx="420" cy="100" r="28" fill="#00F0FF" />
+</svg>
