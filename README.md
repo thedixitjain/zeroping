@@ -4,6 +4,10 @@ ZeroPing is an open-source, fully offline code review tool that connects straigh
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
+<div align="center">
+  <img src="public/screenshot.svg" alt="ZeroPing Code Review Mockup" width="800" />
+</div>
+
 ## Why build this?
 
 Using cloud-based AI tools to review code means you're uploading your logic, keys, and private architectures to a remote server. For a lot of teams and security-conscious folks, that's a hard no. 
