@@ -2,3 +2,11 @@ INFO:     Started server process [16064]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:httpx:HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:52113 - "GET /health HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:52115 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52114 - "GET /models HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:52116 - "GET /models HTTP/1.1" 200 OK
