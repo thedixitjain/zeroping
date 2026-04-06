@@ -137,21 +137,24 @@ export default function Home() {
       {/* Ollama not running banner */}
       {ollamaOk === false && appState === "idle" && (
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
-          <div className="rounded-lg border border-red-500/30 bg-red-500/5 px-4 py-3 flex items-start gap-3">
-            <AlertCircle size={16} className="text-red-400 flex-shrink-0 mt-0.5" />
-            <div className="min-w-0">
-              <p className="text-sm text-red-300 font-medium">Ollama is not running</p>
-              <p className="text-xs text-gray-500 mt-1">
-                Start it with:&nbsp;
-                <code className="font-mono text-red-300 bg-red-500/10 px-1.5 py-0.5 rounded">
-                  ollama serve
-                </code>
-                &nbsp; then pull a model:&nbsp;
-                <code className="font-mono text-red-300 bg-red-500/10 px-1.5 py-0.5 rounded">
-                  ollama pull qwen2.5-coder:7b
-                </code>
-              </p>
+          <div className="rounded-xl border border-rose-500/20 bg-gradient-to-r from-rose-500/10 to-transparent p-4 flex items-center justify-between group overflow-hidden relative">
+            <div className="absolute inset-0 bg-rose-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="h-10 w-10 rounded-full bg-rose-500/10 flex items-center justify-center border border-rose-500/20 flex-shrink-0 shadow-[0_0_15px_rgba(244,63,94,0.15)]">
+                <AlertCircle size={18} className="text-rose-400" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-rose-300 tracking-tight">Ollama Engine Offline</h3>
+                <p className="text-xs text-rose-200/60 mt-0.5">Please ensure the local Ollama instance is running to use AI models.</p>
+              </div>
             </div>
+            <button 
+              onClick={loadModels}
+              className="relative z-10 px-4 py-2 rounded-lg text-xs font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/20 hover:bg-rose-500/20 hover:text-rose-200 transition-all flex items-center gap-2"
+            >
+              <RefreshCw size={14} />
+              Retry Connection
+            </button>
           </div>
         </div>
       )}
